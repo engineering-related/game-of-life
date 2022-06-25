@@ -13,14 +13,14 @@ impl Grid {
     }
 
     pub fn is_in_grid(self, i: isize, j: isize) -> bool{
-        i >= 0 && i <= self.grid.len() as isize &&
-            j >= 0 && j <= self.grid.len() as isize
+        i >= 0 && i < self.grid.len() as isize &&
+            j >= 0 && j < self.grid.len() as isize
     }
 
     pub fn get_number_neighbours(self, i: isize, j: isize) -> usize {
         let mut cnt = 0;
-        for y in -1 + i..1 + i {
-           for x in -1 + j..1 + j {
+        for y in -1 + i..2 + i {
+           for x in -1 + j..2 + j {
                 if x != 0 && y != 0 && self.is_in_grid(x, y) {
                     if self.grid[y as usize][x as usize] {
                         cnt += 1; 
@@ -75,12 +75,12 @@ fn main() {
     grid.grid[4][4] = true; 
     grid.grid[4][3] = true;  
     grid.grid[4][2] = true;  
-    //loop {
-        //grid.update();
+    loop {
+        grid.update();
         println!("{}", grid);
         std::thread::sleep_ms(100);
-        println!("{:?}", grid.grid);
-        //print!("{}[2j", 27 as char);
-   //}
+        //println!("{:?}", grid.grid);
+        print!("{}[2j", 27 as char);
+    }
 
 }
