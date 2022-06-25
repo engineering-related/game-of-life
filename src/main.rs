@@ -35,11 +35,8 @@ impl Grid {
         for i in 0..self.grid.len() {
             for j in 0..self.grid[i].len(){
                 let nr_neig = self.get_number_neighbours(i as isize, j as isize);
-                if nr_neig < 2 {
-                    self.grid[i][j] = false;
-                }
-                else if nr_neig <= 3 {
-                    self.grid[i][j] = true; 
+                if nr_neig == 2 || nr_neig == 3 {
+                    self.grid[i][j] = true;
                 }
                 else {
                     self.grid[i][j] = false;
@@ -80,7 +77,8 @@ fn main() {
         println!("{}", grid);
         std::thread::sleep_ms(100);
         //println!("{:?}", grid.grid);
-        print!("{}[2j", 27 as char);
+        //print!("{}[2j", 27 as char);
+        println!("{}\n", "_")
     }
 
 }
